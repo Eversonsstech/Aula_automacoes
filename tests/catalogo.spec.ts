@@ -8,22 +8,35 @@ async function fazerLogin(page: Page, username: string, password: string) {
     await page.getByRole("button", { name: "Login" }).click();
 }
 
-test.beforeEach(async ({ page }) => {
-    await fazerLogin(page, "standard_user", "secret_sauce");
-});
 
-test("Catálogo validado", async ({ page }) => {
-    await expect(page).toHaveURL(
-        "https://www.saucedemo.com/inventory.html"
-    );
-});
+test.describe("Catalogo", () => {
 
-test("Categorias do catálogo não validado", async ({ page }) => {
+    test.beforeEach(async ({ page }) => {
+        await fazerLogin(
+            page,
+            "standard_user",
+            "secret_sauce"
+        );
+    });
 
-    await page.getByRole("button", { name: "Open Menu" }).click();
+    test("Catálogo validado", async ({ page }) => {
 
-    await expect(
-        page.getByText("All Items")
-    ).toBeVisible();
+        await expect(page).toHaveURL(
+            "https://www.saucedemo.com/inventory.html"
+        );
+
+    });
+
+    test("Categorias do catálogo", async ({ page }) => {
+
+        await page
+            .getByRole("button", { name: "Open Menu" })
+            .click();
+
+        await expect(
+            page.getByText("All Items")
+        ).toBeVisible();
+
+    });
 
 });

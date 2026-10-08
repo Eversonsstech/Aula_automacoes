@@ -6,22 +6,26 @@ async function fazerLogin(page: Page, username: string, password: string ) {
     await page.getByPlaceholder("Password").fill(password);
     await page.getByRole("button", {name:"Login"}).click();
 
+test.describe("Menu Hamburger", () => {
 
-    test.beforeEach( async ({page}) =>{
-        await fazerLogin( page, "standard_user", "secret_suace");
-    })
-
-    test("Menu Hamburger abre: validado.", async ({page}) =>{
-        await expect (page).toHaveURL("https://www.saucedemo.com/inventory.Html"
-
+    test.beforeEach(async ({ page }) => {
+        await fazerLogin(
+            page,
+            "standard_user",
+            "secret_sauce"
         );
-    })
-    test("Menu Hamburger não abre: não validado", async ({ page}) => {
+    });
 
-        await page.getByRole("button", { name: "Open Menu" }).click();
+    test("Menu Hamburger abre", async ({ page }) => {
+
+        await page
+            .getByRole("button", { name: "Open Menu" })
+            .click();
 
         await expect(
             page.getByText("All Items")
         ).toBeVisible();
-    })
-};
+
+    });
+
+});

@@ -7,11 +7,11 @@ async function fazerLogin(page: Page, username: string, password: string) {
     await page.getByRole("button", { name: "Login" }).click();
 }
 
-test.describe("Login", () => {
+test.describe("Carrinho", () => {
 
     test.beforeEach(async ({ page }) => {
         await fazerLogin(page, "standard_user", "secret_sauce");
-    });
+    })
 
     test("add_carrinho validado", async ({ page }) => {
         await expect(page).toHaveURL(
