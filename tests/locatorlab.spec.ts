@@ -37,4 +37,22 @@ test('Submit - Entrar pela API', async ({ request }) => {
   expect(resposta.status()).toBe(200);
 });
 
+/*
 
+Evidencia da execução bem sucedida
+
+
+Running 6 tests using 6 workers
+
+  ✓  1 [firefox] › tests\locatorlab.spec.ts:22:5 › Entrar - acessar o sistema (5.3s)
+  ✓  2 [chromium] › tests\locatorlab.spec.ts:22:5 › Entrar - acessar o sistema (6.0s)
+  ✓  3 [firefox] › tests\locatorlab.spec.ts:29:5 › Submit - Entrar pela API (1.9s)
+  ✓  4 [webkit] › tests\locatorlab.spec.ts:29:5 › Submit - Entrar pela API (2.1s)
+  ✓  5 [webkit] › tests\locatorlab.spec.ts:22:5 › Entrar - acessar o sistema (5.4s)
+  ✓  6 [chromium] › tests\locatorlab.spec.ts:29:5 › Submit - Entrar pela API (1.9s)
+
+  6 passed (8.1s)
+  
+  */
+
+PS C:\Aula_automacoes> 
