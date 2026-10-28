@@ -147,16 +147,16 @@ test.describe("Carrinho", () => {
     });
 
 
-    test("Adicionar produto ao carrinho", async ({ page }) => {
+     test("Adicionar produto ao carrinho", async ({ page }) => {
 
-        await page
-            .getByRole("button", { name: /Add to cart/ })
-            .first()
-            .click();
+        await page.getByRole("button", { name: /Add to cart/ }).first().click();
 
-        await expect(
-            page.getByRole("button", { name: /Remove/ })
-        ).toBeVisible();
+        
+        await expect(page.getByRole("button", { name: "Remove" }).first()).toBeVisible();
+
+       
+        await expect(page.locator(".shopping_cart_badge")).toHaveText("1");
+    
 
     });
 
