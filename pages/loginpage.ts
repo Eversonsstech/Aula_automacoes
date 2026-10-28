@@ -20,7 +20,7 @@ export class LoginPage{
     }
     async login (usuario: string, senha: string){
         await this.campousuario.fill(usuario);
-        await this.campousuario.fill(usuario);
+        await this.camposenha.fill(senha);
         await this.botaoentrar.click();
     }
 }
