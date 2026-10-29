@@ -21,11 +21,7 @@ test.describe("Login", () => {
 
     test("Login válido", async ({ page }) => {
 
-        await fazerLogin(
-            page,
-            "standard_user",
-            "secret_sauce"
-        );
+        await fazerLogin(page, "standard_user","secret_sauce");
 
         await expect(page).toHaveURL(INVENTORY_URL);
     });
@@ -33,15 +29,9 @@ test.describe("Login", () => {
 
     test("Login inválido", async ({ page }) => {
 
-        await fazerLogin(
-            page,
-            "usuario_errado",
-            "senha_errada"
-        );
+        await fazerLogin(page,"usuario_errado","senha_errada");
 
-        await expect(
-            page.getByText("Epic sadface")
-        ).toBeVisible();
+        await expect(page.getByText("Epic sadface")).toBeVisible();
     });
 
 });
@@ -53,25 +43,16 @@ test.describe("Menu Hamburger", () => {
 
     test.beforeEach(async ({ page }) => {
 
-        await fazerLogin(
-            page,
-            "standard_user",
-            "secret_sauce"
-        );
+        await fazerLogin(page, "standard_user", "secret_sauce");
 
     });
 
 
     test("Abrir menu", async ({ page }) => {
 
-        await page.getByRole(
-            "button",
-            { name: "Open Menu" }
-        ).click();
+        await page.getByRole("button",{ name: "Open Menu" }).click();
 
-        await expect(
-            page.getByText("All Items")
-        ).toBeVisible();
+        await expect(page.getByText("All Items")).toBeVisible();
 
     });
 
@@ -84,11 +65,7 @@ test.describe("Catálogo", () => {
 
     test.beforeEach(async ({ page }) => {
 
-        await fazerLogin(
-            page,
-            "standard_user",
-            "secret_sauce"
-        );
+        await fazerLogin( page, "standard_user", "secret_sauce");
 
     });
 
@@ -108,24 +85,16 @@ test.describe("Filtro", () => {
 
     test.beforeEach(async ({ page }) => {
 
-        await fazerLogin(
-            page,
-            "standard_user",
-            "secret_sauce"
-        );
+        await fazerLogin(page, "standard_user", "secret_sauce");
 
     });
 
 
     test("Ordenar produtos de Z para A", async ({ page }) => {
 
-        await page
-            .locator(".product_sort_container")
-            .selectOption("za");
+        await page.locator(".product_sort_container").selectOption("za");
 
-        await expect(
-            page.locator(".product_sort_container")
-        ).toHaveValue("za");
+        await expect(page.locator(".product_sort_container")).toHaveValue("za");
 
     });
 
@@ -138,11 +107,7 @@ test.describe("Carrinho", () => {
 
     test.beforeEach(async ({ page }) => {
 
-        await fazerLogin(
-            page,
-            "standard_user",
-            "secret_sauce"
-        );
+        await fazerLogin(page,"standard_user","secret_sauce");
 
     });
 
